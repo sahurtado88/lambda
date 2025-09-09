@@ -91,19 +91,19 @@ jobs:
         
         echo "Updated SSM parameter: /lambda/my-app/$ENVIRONMENT/image-uri = $IMAGE_URI"
     
-    - name: Create GitHub Release (only on main)
-      if: github.ref == 'refs/heads/main'
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v${{ github.run_number }}
-        release_name: Release v${{ github.run_number }}
-        body: |
-          🚀 New Lambda deployment
-          
-          **Image URI:** ${{ steps.build-image.outputs.image-uri }}
-          **Commit:** ${{ github.sha }}
-          **Environment:** Production
-        draft: false
-        prerelease: false
+    #- name: Create GitHub Release (only on main)
+    #  if: github.ref == 'refs/heads/main'
+    #  uses: actions/create-release@v1
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #  with:
+    #    tag_name: v${{ github.run_number }}
+    #    release_name: Release v${{ github.run_number }}
+    #    body: |
+    #      🚀 New Lambda deployment
+    #      
+    #      **Image URI:** ${{ steps.build-image.outputs.image-uri }}
+    #      **Commit:** ${{ github.sha }}
+    #      **Environment:** Production
+    #    draft: false
+    #    prerelease: false
